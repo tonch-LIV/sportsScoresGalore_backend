@@ -2,14 +2,17 @@
 
 - [Overview](#overview)
   - [Current Goals](#current-goals)
+    - [Initial Match Route](#initial-match-route)
     - [Supported Competitions](#supported-competitions)
     - [Season Selection](#season-selection)
   - [Planned Features (stretch)](#planned-features-stretch)
   - [Technologies](#technologies)
+  - [Environment Variables](#environment-variables)
 - [Frontend Repository](#frontend-repository)
 - [Screenshots](#screenshots)
+- [Local Development](#local-development)
 - [Changelog](#changelog)
--[If I Had More Time](#if-i-had-more-time)
+<!-- - [If I Had More Time](#if-i-had-more-time) -->
 
 ## Overview
 
@@ -22,11 +25,27 @@ Future development may also include weather integration, Auth0-protected routes,
 ### Current Goals
 
 - Serve match information through REST endpoints for the React frontend
+- Search for matches by competition and date
 - Communicate with [Footballdata.io](https://footballdata.io/) API
 - Validate incoming query parameters
 - Normalize external API responses
 - Return consistent loading and error responses
 - Support manual score and fixture refreshes
+
+#### Initial Match Route
+
+The initial match endpoint will use this general format:
+
+```
+GET /api/matches?league=45&date=2026-07-28
+```
+
+The route will receive;  
+a competition ID and date from frontend,  
+Validate the required query parameters,  
+Request matching data from Footballdata.io,  
+Remove fields that the frontend does not require,  
+Return a simplified array of match objects.  
 
 #### Supported Competitions
 
@@ -52,8 +71,7 @@ The planned season-selection rules are:
 
 ### Planned Features (stretch)
 
-- League and team lookup endpoints
-- Match search by league and date
+- Competition and team lookup endpoints
 - Team filtering
 - Weather API integration
 - Auth0 protected routes
@@ -72,13 +90,26 @@ The planned season-selection rules are:
 - Auth0
 - CORS
 
-### Frontend Repository
+### Environment Variables
+
+External API configuration is stored in the backend `.env` file. The `.env` file is ignored by Git and must never be committed.
+
+Required variables:
+
+```env
+FOOTBALLDATA_API_URL=your_api_url
+FOOTBALLDATA_API_KEY=your_api_key
+```
+
+## Frontend Repository
 
 This backend is intended to support the [Sports, Scores, Galore React frontend](https://github.com/tonch-LIV/sportsScoresGalore).
 
-## Screenshot
+## Screenshots
 
 *(Coming soon)*
+
+## Local Development
 
 ## Changelog
 
@@ -89,6 +120,6 @@ This backend is intended to support the [Sports, Scores, Galore React frontend](
 - Confirmed competition, fixture, result, team, season, venue, and full-match endpoints.
 - Confirmed a monthly free-plan allowance of 2,000 API requests.
 
-## If I Had More Time
+<!-- ## If I Had More Time
 
--
+- -->
