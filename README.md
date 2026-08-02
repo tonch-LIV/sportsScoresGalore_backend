@@ -29,7 +29,7 @@ Future development may also include weather integration, Auth0-protected routes,
 - Communicate with [Footballdata.io](https://footballdata.io/) API
 - Validate incoming query parameters
 - Normalize external API responses
-- Return consistent loading and error responses
+- Return consistent success and error responses
 - Support manual score and fixture refreshes
 
 #### Initial Match Route
@@ -40,12 +40,13 @@ The initial match endpoint will use this general format:
 GET /api/matches?league=45&date=2026-07-28
 ```
 
-The route will receive;  
-a competition ID and date from frontend,  
-Validate the required query parameters,  
-Request matching data from Footballdata.io,  
-Remove fields that the frontend does not require,  
-Return a simplified array of match objects.  
+The route will receive:
+
+1. Receive a competition ID and date from frontend.  
+2. Validate the required query parameters.  
+3. Request matching data from Footballdata.io.  
+4. Remove fields that the frontend does not require.  
+5. Return a simplified array of match objects.  
 
 #### Supported Competitions
 
@@ -111,14 +112,27 @@ This backend is intended to support the [Sports, Scores, Galore React frontend](
 
 ## Local Development
 
+Install dependencies:
+
+```bash
+npm install
+```
+
 ## Changelog
 
 - Initial Express project setup
 - **`test`** branch created.  
   - Tested API-Football and documented its free-plan date and season restrictions.
-- Selected Footballdata.io as the primary soccer data provider.
-- Confirmed competition, fixture, result, team, season, venue, and full-match endpoints.
-- Confirmed a monthly free-plan allowance of 2,000 API requests.
+  - Selected Footballdata.io as the primary soccer data provider.
+  - Confirmed competition, fixture, result, team, season, venue, and full-match endpoints.
+  - Confirmed a monthly free-plan allowance of 2,000 API requests.
+  - updated `"main": "server.js"` and added command that automatically refreshes server `"dev": "node --watch server.js"`; package.json.
+  - created `competitions` object as allowlist for valid IDs, rejecting info on any others; server.js.
+  - created GET request for `/api/matches` with validation checks; server.js.
+  - enable use of `.env` variables (`require('dotenv').config`), defined variable names (`FOOTBALLDATA_API_URL` and `FOOTBALLDATA_API_KEY`) with error check if not setup, and imported `axios`; server.js.
+  - updated GET request of `'/api/matches'` to be asynchronous, allowing adequate loading between external request and internal server; server.js.
+  - replaced temporary successful response with validation checks and status responses; server.js.
+  - `curl` requests are successful.
 
 <!-- ## If I Had More Time
 
