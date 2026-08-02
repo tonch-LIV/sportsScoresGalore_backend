@@ -126,13 +126,16 @@ npm install
   - Selected Footballdata.io as the primary soccer data provider.
   - Confirmed competition, fixture, result, team, season, venue, and full-match endpoints.
   - Confirmed a monthly free-plan allowance of 2,000 API requests.
-  - updated `"main": "server.js"` and added command that automatically refreshes server `"dev": "node --watch server.js"`; package.json.
-  - created `competitions` object as allowlist for valid IDs, rejecting info on any others; server.js.
-  - created GET request for `/api/matches` with validation checks; server.js.
-  - enable use of `.env` variables (`require('dotenv').config`), defined variable names (`FOOTBALLDATA_API_URL` and `FOOTBALLDATA_API_KEY`) with error check if not setup, and imported `axios`; server.js.
-  - updated GET request of `'/api/matches'` to be asynchronous, allowing adequate loading between external request and internal server; server.js.
-  - replaced temporary successful response with validation checks and status responses; server.js.
+  - updated `"main": "server.js"` and added command that automatically refreshes server `"dev": "node --watch server.js"`; `package.json`.
+  - created `competitions` object as allowlist for valid IDs, rejecting info on any others; `server.js`.
+  - created GET request for `/api/matches` with validation checks; `server.js`.
+  - enable use of `.env` variables (`require('dotenv').config`), defined variable names (`FOOTBALLDATA_API_URL` and `FOOTBALLDATA_API_KEY`) with error check if not setup, and imported `axios`; `server.js`.
+  - updated GET request of `'/api/matches'` to be asynchronous, allowing adequate loading between external request and internal server; `server.js`.
+  - replaced temporary successful response with validation checks and status responses; `server.js`.
   - `curl` requests are successful.
+  - modify raw respose from `curl` into usable object for data needed / want to render; `dateIsValid`; `server.js`.
+  - fixed misspellings in `timestamp: match.date_unix,` and `name: match.league?.competition_name` that lead to incomplete / `undefined` return from omitted properties from request; `providerMatches.map()` ; `server.js`.
+  - added `console.log()` after `providerMatches` variable for feedback on how many matches were returned for league and date requested; `server.js`.
 
 <!-- ## If I Had More Time
 

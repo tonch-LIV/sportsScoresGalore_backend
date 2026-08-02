@@ -96,7 +96,59 @@ app.get('/api/matches', async (req, res) => {
       }
     });
 
-    res.status(200).send(apiResponse.data);
+    const providerMatches = apiResponse.data?.data?.matches ?? [];
+
+    console.log(
+      `Footballdata.io returned ${providerMatches.length} match(es)` + 
+      `for league ${league} on ${date}.`
+    );
+    
+    // .map() takes large array of data received from api and segments into pieces needed
+    const matches = providerMatches.map((match) => ({
+      id: match.match_id,
+      date: match.match_date,
+      timestamp: match.date_unix,
+
+      status: match.status,
+      displayStatus: match.status_localized || match.status,
+
+      league: {
+        id: match.league?.league_id ?? null,
+        name: match.league?.competition_name || match.league?.name || 'Unknown',
+        logo: match.league?.image || null
+      },
+
+      homeTeam: {
+        id: match.home_team?.team_id ?? null,
+        name: match.home_team?.team_name || 'Unknown',
+        logo: match.home_team?.team_logo || null
+      },
+
+      awayTeam: {
+        id: match.away_team?.team_id ?? null,
+        name: match.away_team?.team_name || 'Unknown',
+        logo: match.away_team?.team_logo || null
+      },
+
+      score: {
+        home: match.score?.home ?? null,
+        away: match.score?.away ?? null
+      },
+
+      venue: {
+        name: match.venue?.stadium_name || null,
+        location: match.venue?.stadium_location || null
+      }
+    }));
+
+    res.status(200).send({
+      competition: {
+        id: Number(league),
+        name: competitions[league]
+      },
+      date: apiResponse.data?.data?.date || date,
+      matches
+    });
   } catch (error) {
     const providerStatus = error.response?.status;  // `?` displays status only if response exists;  
     const providerMessage = 
