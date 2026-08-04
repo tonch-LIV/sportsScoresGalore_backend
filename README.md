@@ -141,6 +141,7 @@ npm install
   - installed `jest` and `supertest`; updated `"test": "test"`; `package.json`.
   - created `test` subdirectory -> `matches.test.js`.
   - further validation tests added to cover correct date, wrong format , as well as correct format, but nonexistent date; `matches.test.js`.
+  - added to `.gitignore` dont kow if it's too late since it's already been pushed to github, but shouldn't hurt...
 
 <!-- ## If I Had More Time
 
