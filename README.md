@@ -136,6 +136,10 @@ npm install
   - modify raw respose from `curl` into usable object for data needed / want to render; `dateIsValid`; `server.js`.
   - fixed misspellings in `timestamp: match.date_unix,` and `name: match.league?.competition_name` that lead to incomplete / `undefined` return from omitted properties from request; `providerMatches.map()` ; `server.js`.
   - added `console.log()` after `providerMatches` variable for feedback on how many matches were returned for league and date requested; `server.js`.
+  - began modularizing by separating app from startup; re-naming `server.js` -> `app.js`.
+  - re-structured application by removing network functionality and exported to `server.js`, ensuring single responsibility. `app.js`.
+  - 
+
 
 <!-- ## If I Had More Time
 
