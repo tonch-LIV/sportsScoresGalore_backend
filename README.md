@@ -138,8 +138,8 @@ npm install
   - added `console.log()` after `providerMatches` variable for feedback on how many matches were returned for league and date requested; `server.js`.
   - began modularizing by separating app from startup; re-naming `server.js` -> `app.js`.
   - re-structured application by removing network functionality and exported to `server.js`, ensuring single responsibility. `app.js`.
-  - 
-
+  - installed `jest` and `supertest`; updated `"test": "test"`; `package.json`.
+  - created `test` subdirectory -> `matches.test.js`.
 
 <!-- ## If I Had More Time
 

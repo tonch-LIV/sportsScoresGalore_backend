@@ -91,7 +91,7 @@ app.get('/api/matches', async (req, res) => {
     const providerMatches = apiResponse.data?.data?.matches ?? [];
 
     console.log(
-      `Footballdata.io returned ${providerMatches.length} match(es)` + 
+      `Footballdata.io returned ${providerMatches.length} match(es) ` + 
       `for league ${league} on ${date}.`
     );
     

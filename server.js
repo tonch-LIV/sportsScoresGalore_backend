@@ -1,10 +1,6 @@
 'use strict'
-// ======================================================
-// Debugging Test
-//
-// This server.js file contains MANY intentional mistakes.
-// Your job is to find and fix them.
-// ======================================================
+// ==================================================
+// broken serbver/j] ======================================================
 
 const app = require('./app');
 const PORT = process.env.PORT || 3001; 
