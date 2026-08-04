@@ -140,6 +140,7 @@ npm install
   - re-structured application by removing network functionality and exported to `server.js`, ensuring single responsibility. `app.js`.
   - installed `jest` and `supertest`; updated `"test": "test"`; `package.json`.
   - created `test` subdirectory -> `matches.test.js`.
+  - further validation tests added to cover correct date, wrong format , as well as correct format, but nonexistent date; `matches.test.js`.
 
 <!-- ## If I Had More Time
 

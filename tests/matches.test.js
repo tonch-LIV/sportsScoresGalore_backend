@@ -17,4 +17,50 @@ describe('GET /api/matches', () => {
       message: 'League and date query parameters are required.'
     });
   });
+
+  test('returns 400 when league is missing', async () => {
+    const response = await request(app).get('/api/matches?date=2026-07-28');
+
+    expect(response.status).toBe(400);
+    expect(response.body).toEqual({
+      message: 'League and date query parameters are required.'
+    });
+  });
+
+  test('returns 400 when date is missing', async () => {
+    const response = await request(app).get('/api/matches?league=45');
+
+    expect(response.status).toBe(400);
+    expect(response.body).toEqual({
+      message: 'League and date query parameters are required.'
+    });
+  });
+
+  test('returns 400 for an unsupported competition', async () => {
+    const response = await request(app).get('/api/matches?league=999&date=2026-07-28');
+
+    expect(response.status).toBe(400);
+    expect(response.body).toEqual({
+      message: 'The requested competition is not supported.'
+    });
+  });
+
+  test('returns 400 when the date has an invalid format', async () => {
+    const response = await request(app).get('/api/matches?league=45&date=July-28-2026');
+
+    expect(response.status).toBe(400);
+    expect(response.body).toEqual({
+      message: 'Date must be a valid date using YYYY-MM-DD format.'
+    });
+  });
+
+  test('returns 400 when the date is impossible', async () => {
+    const response = await request(app).get('/api/matches?league=45&date=2026-02-30');
+
+    expect(response.status).toBe(400);
+    expect(response.body).toEqual({
+      message: 'Date must be a valid date using YYYY-MM-DD format.'
+    });
+  });
+  
 });
