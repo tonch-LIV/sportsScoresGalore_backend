@@ -18,7 +18,7 @@ if (!FOOTBALLDATA_API_URL || !FOOTBALLDATA_API_KEY) {
   throw new Error(
     'FOOTBALLDATA_API_URL and FOOTBALLDATA_API_KEY must be configured.'
   );
-};
+}
 
 const competitions = {
   10: 'La Liga',
@@ -45,6 +45,13 @@ app.use(express.json());
 // home
 app.get('/', (req, res) => {
   res.send('Welcome to the API!');
+});
+
+app.get('/api/health', (req, res) => {
+  res.status(200).send({
+    status: 'ok',
+    message: 'Sports, Scores, Galore API is running.'
+  });
 });
 
 app.get('/api/matches', async (req, res) => {
@@ -159,74 +166,47 @@ app.get('/api/matches', async (req, res) => {
     res.status(502).send({
       message: 'Unable to retrieve matches from Footballdata.io.'
     });
-  };
+  }
 });
 
 // retrieve weather 
-app.get('/weather', (req, res) => {
-  res.send({
-    city: "Seattle",
-    forecast: "Rain"
-  });
-});
+
 
 // retrieve favorites 
-app.get('/favorites', (req, res) => {
-  res.send({
-    message: "Favorites route is working!",
-    favorites: []
-  });
-});
+
 
 // create a favorite
-app.post('/favorites', (req, res) => {
-  const city = req.body.city;
-  console.log(city);
 
-  res.send({
-    message: "Favorite saved!",
-    city: city
-  });
-});
 
 // delete a favorite
-app.delete('/favorites/:id', (req, res) => {
-  const id = req.params.id;
-  res.send({
-    message: `Deleted ${id}`
-  });
-});
 
 
 // update a favorite
-app.put('/favorites/:id', (req, res) => {
-  const id = req.params.id;
-  const city = req.body.city;
 
-  res.send({
-    id,
-    city,
-    message: "Updated!"
-  });
-});
 
 // ======================
 // error testing route  |
 // ======================
-app.get('/error', (req, res) => {
-  throw new Error("Testing errors.");
-});
+// app.get('/error', (req, res) => {
+//   throw new Error("Testing errors.");
+// });
 
 // 404
 app.use((req, res) => {
-  res.status(404).send("Page Not Found");
+  res.status(404).send({
+    message: "Page Not Found."
+  });
 });
 
 // error handler
 app.use((error, req, res, next) => {
-  console.error(error);
+  console.error('Unhandled server error:', error.message);
 
-  res.status(500).send({
+  if (res.headersSent) {
+    return next(error);
+  }
+
+  return res.status(500).send({
     message: 'Internal server Error'
   });
 });

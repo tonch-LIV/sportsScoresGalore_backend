@@ -141,7 +141,16 @@ npm install
   - installed `jest` and `supertest`; updated `"test": "test"`; `package.json`.
   - created `test` subdirectory -> `matches.test.js`.
   - further validation tests added to cover correct date, wrong format , as well as correct format, but nonexistent date; `matches.test.js`.
-  - added to `.gitignore` dont kow if it's too late since it's already been pushed to github, but shouldn't hurt...
+  - added to `.gitignore` don't know if it's too late since it's already been pushed to github, but shouldn't hurt...
+    - verified files not being tracked, all good.
+  - [screenshots] (terminal)
+  - cleanup
+    - deleted placeholder routes from broken server template, `GET /weather`, `GET /favorites`, `POST /favorites`, `DELETE /favorites/:id`, and `PUT /favorites/:id`; commented `GET /error` for later use; `app.js`.
+    - added health endpoint after `/` home route to confirm Express app is running and reachable; `app.js`.
+    - updated 404 handler to return message as JSON, easier for React to handle; `app.js`.
+    - updated general error handler with `res.headersSent` to protect against repeated requests / responses if one has already been started.
+    - removed comment about broken server template; `server.js`.
+    - `npm test` reflects changes made did not affect match routes. [screenshots]
 
 <!-- ## If I Had More Time
 
