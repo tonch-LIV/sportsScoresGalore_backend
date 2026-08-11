@@ -152,6 +152,10 @@ npm install
     - removed comment about broken server template; `server.js`.
     - `npm test` reflects changes made did not affect match routes. [screenshots]
 
-<!-- ## If I Had More Time
+- **`authFavor`** branch created.
 
-- -->
+## If I Had More Time
+
+- LocationIQ for better geolocation info.
+- Weatherbit for current and forecast weather.
+- research for API to provide lquid d
