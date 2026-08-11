@@ -152,6 +152,29 @@ npm install
     - removed comment about broken server template; `server.js`.
     - `npm test` reflects changes made did not affect match routes. [screenshots]
 
+- **`auth0Fav0r`** branch created.
+  - install `express-oauth2-jwt-bearer`.
+  - added auth0 backend config; `.env`.
+  - created `/middleware/` -> `checkJwt.js`.
+  - updated match-test ; `matches.test.js`.
+  - import `matches.test.js` and defined GET /favorites routes; `app.js`.
+  - updated generic error handler; `app.js`.
+  - created `favorites.test.js`; `/tests/`.
+  - created `/routes/` -> `favorites.js` to counter being too large and try to modularize.
+  - update import from `checkJwt` to `favorites`, as well as route ; `app.js`.
+  - install `mongoose`.
+  - defined mongodb variable; `.env`.
+  - created `db.js`.
+  - created `/models/` -> `FavoriteTeam` model.
+  - updated `server.js`to better synch startup time between Espress, Mongo, etc.
+  - updated `favorites.js` with CRUD.
+  - updated `describe` block; prove authentication occurs before any database operation; `favorites.test.js`.
+
+## If I Had More Time
+
+- locationIQ for better loaction info.
+- WeatherBit for current and forecast weather.
+- research API for local events & restaurants.
 - **`authFavor`** branch created.
 
 ## If I Had More Time
