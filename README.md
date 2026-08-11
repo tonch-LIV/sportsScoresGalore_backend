@@ -175,3 +175,10 @@ npm install
 - locationIQ for better loaction info.
 - WeatherBit for current and forecast weather.
 - research API for local events & restaurants.
+- **`authFavor`** branch created.
+
+## If I Had More Time
+
+- LocationIQ for better geolocation info.
+- Weatherbit for current and forecast weather.
+- research for API to provide lquid d
