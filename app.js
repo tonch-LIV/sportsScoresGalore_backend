@@ -176,15 +176,6 @@ app.get('/api/matches', async (req, res) => {
 // retrieve favorites 
 app.use('/api/favorites', favoritesRouter);
 
-// create a favorite
-
-
-// delete a favorite
-
-
-// update a favorite
-
-
 // ======================
 // error testing route  |
 // ======================

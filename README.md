@@ -167,7 +167,8 @@ npm install
   - created `db.js`.
   - created `/models/` -> `FavoriteTeam` model.
   - updated `server.js`to better synch startup time between Espress, Mongo, etc.
-  - 
+  - updated `favorites.js` with CRUD.
+  - updated `describe` block; prove authentication occurs before any database operation; `favorites.test.js`.
 
 ## If I Had More Time
 
