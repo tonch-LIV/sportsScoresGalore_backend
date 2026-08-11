@@ -165,6 +165,9 @@ npm install
   - install `mongoose`.
   - defined mongodb variable; `.env`.
   - created `db.js`.
+  - created `/models/` -> `FavoriteTeam` model.
+  - updated `server.js`to better synch startup time between Espress, Mongo, etc.
+  - 
 
 ## If I Had More Time
 
