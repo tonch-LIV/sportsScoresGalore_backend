@@ -3,6 +3,10 @@
 process.env.FOOTBALLDATA_API_URL = 'https://example.test';
 process.env.FOOTBALLDATA_API_KEY = 'test-api-key';
 
+process.env.AUTH0_AUDIENCE =
+  'https://sports-scores-galore-api';
+process.env.AUTH0_ISSUER_BASE_URL =
+  'https://example.auth0.com/';
 
 const request = require('supertest');
 const app = require('../app');

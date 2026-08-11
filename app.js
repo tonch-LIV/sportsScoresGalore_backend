@@ -7,6 +7,7 @@ require('dotenv').config({
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
+const favoritesRouter = require('./routes/favorites');
 
 const app = express();
 
@@ -173,7 +174,7 @@ app.get('/api/matches', async (req, res) => {
 
 
 // retrieve favorites 
-
+app.use('/api/favorites', favoritesRouter);
 
 // create a favorite
 
@@ -200,14 +201,23 @@ app.use((req, res) => {
 
 // error handler
 app.use((error, req, res, next) => {
-  console.error('Unhandled server error:', error.message);
-
   if (res.headersSent) {
     return next(error);
   }
 
+  const status =
+    error.status || error.statusCode || 500;
+
+  if (status === 401) {
+    return res.status(401).send({
+      message: 'A valid access token is required.'
+    });
+  }
+
+  console.error('Unhandled server error:', error.message);
+
   return res.status(500).send({
-    message: 'Internal server Error'
+    message: 'Internal server error.'
   });
 });
 
