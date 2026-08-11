@@ -1,5 +1,7 @@
 # Sports, Scores, Galore - backEnd
 
+![Banner](img/BANNER_26-08-09.png)
+
 - [Overview](#overview)
   - [Current Goals](#current-goals)
     - [Initial Match Route](#initial-match-route)
@@ -108,7 +110,9 @@ This backend is intended to support the [Sports, Scores, Galore React frontend](
 
 ## Screenshots
 
-*(Coming soon)*
+![Wireframe](img/WIREFRAME_26-07-21.png)
+![Results](img/BACKEND_TERMINAL_26-08-06.png)
+
 
 ## Local Development
 
@@ -143,14 +147,15 @@ npm install
   - further validation tests added to cover correct date, wrong format , as well as correct format, but nonexistent date; `matches.test.js`.
   - added to `.gitignore` don't know if it's too late since it's already been pushed to github, but shouldn't hurt...
     - verified files not being tracked, all good.
-  - [screenshots] (terminal)
   - cleanup
     - deleted placeholder routes from broken server template, `GET /weather`, `GET /favorites`, `POST /favorites`, `DELETE /favorites/:id`, and `PUT /favorites/:id`; commented `GET /error` for later use; `app.js`.
     - added health endpoint after `/` home route to confirm Express app is running and reachable; `app.js`.
     - updated 404 handler to return message as JSON, easier for React to handle; `app.js`.
     - updated general error handler with `res.headersSent` to protect against repeated requests / responses if one has already been started.
     - removed comment about broken server template; `server.js`.
-    - `npm test` reflects changes made did not affect match routes. [screenshots]
+    - `npm test` reflects changes made did not affect match routes.
+      - ![test](img/npm_test.png)
+
 
 - **`auth0Fav0r`** branch created.
   - install `express-oauth2-jwt-bearer`.
@@ -170,15 +175,10 @@ npm install
   - updated `favorites.js` with CRUD.
   - updated `describe` block; prove authentication occurs before any database operation; `favorites.test.js`.
 
+- images for README added.
+
 ## If I Had More Time
 
 - locationIQ for better loaction info.
 - WeatherBit for current and forecast weather.
 - research API for local events & restaurants.
-- **`authFavor`** branch created.
-
-## If I Had More Time
-
-- LocationIQ for better geolocation info.
-- Weatherbit for current and forecast weather.
-- research for API to provide lquid d
